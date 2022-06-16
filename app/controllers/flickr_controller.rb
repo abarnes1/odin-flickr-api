@@ -1,15 +1,13 @@
 class FlickrController < ApplicationController
   def index
-    if params[:flickr_user_id]
-      # flickr = Flickr.new ENV['flickr_api_key'], ENV['flickr_api_secret']
-      debugger
-      flickr = Flickr.new
+    return unless params[:flickr_user_id]
 
-      # @photos = flickr.photos.search(tags: params[:flickr_user_id])
-      photos = flickr.people.getPublicPhotos(user_id: '7702423@N04', per_page: 5)
-      @images = photos.map do |url|
-        Flickr.url_m(url)
-      end
+    flickr = Flickr.new
+
+    photos_json = flickr.people.getPublicPhotos(user_id: '7702423@N04', per_page: 10)
+
+    @photos = photos_json.each_with_object([]) do |photo, array|
+      array << { thumbnail: Flickr.url_m(photo), full: Flickr.url(photo) }
     end
   end
 end

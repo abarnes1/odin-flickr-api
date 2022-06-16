@@ -1,15 +1,13 @@
 <section class="section">
   <h1 class="title has-text-centered">Flickr User Search</h1>
 
-  <div class="block">
-    <div class="columns is-mobile is-centered ">
-      <%= render partial: 'form' %>
-    </div>
+  <div class="columns is-mobile is-centered ">
+    <%= render partial: 'form' %>
   </div>
 </section>
 
 <section class="section">
-  <% @images.each do |image| %>
-    <p class='has-text-centered'><%= image %></p>
-  <% end if @images %>
+  <% @photos.each do |photo| %>
+    <%= link_to image_tag(photo[:thumbnail]), photo[:full] %>
+  <% end if @photos %>
 </section>
