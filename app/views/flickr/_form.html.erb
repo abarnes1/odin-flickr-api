@@ -1,0 +1,11 @@
+<%= form_with url: root_path, method: :get do |form| %>
+  <div class="field has-addons">
+    <div class="control">
+      <%= form.text_field :flickr_user_id, class: 'input', placeholder: 'Flickr User ID', value: '7702423@N04' %>
+    </div>
+
+    <div class="control">
+      <%= form.submit 'Find Photos', class: 'button' %>
+    </div>
+  </div>
+<% end %>

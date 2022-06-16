@@ -1,1 +1,15 @@
-flickr#index
+<section class="section">
+  <h1 class="title has-text-centered">Flickr User Search</h1>
+
+  <div class="block">
+    <div class="columns is-mobile is-centered ">
+      <%= render partial: 'form' %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <% @images.each do |image| %>
+    <p class='has-text-centered'><%= image %></p>
+  <% end if @images %>
+</section>
