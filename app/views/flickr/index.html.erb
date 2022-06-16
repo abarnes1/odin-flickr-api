@@ -4,6 +4,14 @@
   <div class="columns is-mobile is-centered ">
     <%= render partial: 'form' %>
   </div>
+
+  <% flash.each do |type, msg| %>
+    <% if type == 'alert' %>
+        <p class="has-text-centered has-text-danger">
+          <%= msg %>
+        </p>
+    <% end %>
+  <% end %>
 </section>
 
 <section class="section">
